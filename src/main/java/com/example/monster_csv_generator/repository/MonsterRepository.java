@@ -6,7 +6,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface MonsterRepository {
+public interface MonsterRepository
+{
     List<Monster> findByName(String name);
     List<Monster> findByNameContainingIgnoreCase(String namePart);
 

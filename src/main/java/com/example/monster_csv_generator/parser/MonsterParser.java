@@ -6,8 +6,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MonsterParser {
+public class MonsterParser
+{
     private final ObjectMapper mapper;
 
     public MonsterParser()
@@ -22,7 +28,37 @@ public class MonsterParser {
      * @return ParsedMonsterDto object.
      * @throws IOException if file read or parse fails.
      */
-    public ParsedMonsterDto parseFromFile(File file) throws IOException {
+    public ParsedMonsterDto parseFromFile(File file) throws IOException
+    {
         return mapper.readValue(file, ParsedMonsterDto.class);
+    }
+
+    public List<ParsedMonsterDto> parseAllFromFolder(Path folderPath) throws IOException
+    {
+        List<ParsedMonsterDto> monsterDtos = new ArrayList<>();
+        if(!Files.isDirectory(folderPath))
+        {
+            throw new IllegalArgumentException(folderPath.toString() + " is not a valid folder path");
+        }
+        try
+        {
+            DirectoryStream<Path> stream = Files.newDirectoryStream(folderPath,"*.monster");
+            for (Path filePath : stream)
+            {
+                try
+                {
+                    ParsedMonsterDto dto = parseFromFile(filePath.toFile());
+                    monsterDtos.add(dto);
+                }
+                catch (Exception e)
+                {
+                    System.out.println("failed to parse file: " + filePath.getFileName() + " — " + e.getMessage());
+                }
+            }
+        }
+        finally
+        {
+            return monsterDtos;
+        }
     }
 }

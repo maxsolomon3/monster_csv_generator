@@ -2,7 +2,8 @@ package com.example.monster_csv_generator.monsterparser.dto;
 
 import java.util.List;
 
-public class ParsedMonsterDto {
+public class ParsedMonsterDto
+{
     // Basic info
     public String name;
     public String size;

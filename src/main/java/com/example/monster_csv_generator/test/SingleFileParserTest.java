@@ -6,10 +6,12 @@ import com.example.monster_csv_generator.parser.MonsterParser;
 import java.io.File;
 import java.io.IOException;
 
-public class ParserTest {
-    public static void main(String[] args) throws IOException {
+public class SingleFileParserTest
+{
+    public static void main(String[] args) throws IOException
+    {
         MonsterParser parser = new MonsterParser();
-        File file = new File("C:\\Users\\maxso\\IdeaProjects\\monster_csv_generator\\src\\main\\java\\com\\example\\monster_csv_generator\\test\\adult_black_dragon.monster");
+        File file = new File("C:\\Users\\maxso\\IdeaProjects\\monster_csv_generator\\src\\main\\java\\com\\example\\monster_csv_generator\\test\\resources\\adult_black_dragon.monster");
         ParsedMonsterDto dto = parser.parseFromFile(file);
         System.out.println("Monster Name: " + dto.name);
         System.out.println("CR: " + dto.cr);

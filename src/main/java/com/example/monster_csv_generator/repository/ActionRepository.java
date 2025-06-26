@@ -4,7 +4,8 @@ import com.example.monster_csv_generator.entity.Action;
 
 import java.util.List;
 
-public interface ActionRepository {
+public interface ActionRepository
+{
     // By action name
     List<Action> findByName(String name);
     List<Action> findByNameContainingIgnoreCase(String namePart);

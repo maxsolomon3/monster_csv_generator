@@ -4,7 +4,8 @@ import com.example.monster_csv_generator.entity.Ability;
 
 import java.util.List;
 
-public interface AbilityRepository {
+public interface AbilityRepository
+{
     // Name-based queries
     List<Ability> findByName(String name);
     List<Ability> findByNameIgnoreCase(String name);
