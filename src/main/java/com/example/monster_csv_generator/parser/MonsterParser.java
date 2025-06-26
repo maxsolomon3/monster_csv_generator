@@ -43,22 +43,19 @@ public class MonsterParser
         try
         {
             DirectoryStream<Path> stream = Files.newDirectoryStream(folderPath,"*.monster");
-            for (Path filePath : stream)
-            {
-                try
-                {
+            for (Path filePath : stream) {
+                try {
                     ParsedMonsterDto dto = parseFromFile(filePath.toFile());
                     monsterDtos.add(dto);
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     System.out.println("failed to parse file: " + filePath.getFileName() + " — " + e.getMessage());
                 }
             }
         }
-        finally
+        catch (IOException e)
         {
-            return monsterDtos;
+            System.out.println("failed to open folder: " + folderPath.toString() + " - " + e.getMessage());
         }
+        return monsterDtos;
     }
 }
