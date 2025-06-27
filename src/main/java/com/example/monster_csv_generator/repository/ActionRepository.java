@@ -1,10 +1,11 @@
 package com.example.monster_csv_generator.repository;
 
 import com.example.monster_csv_generator.entity.Action;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ActionRepository
+public interface ActionRepository extends JpaRepository<Action,Long>
 {
     // By action name
     List<Action> findByName(String name);

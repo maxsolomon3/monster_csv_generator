@@ -6,11 +6,12 @@ import com.example.monster_csv_generator.parser.MonsterParser;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
-
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 public class FolderParserTest {
     public static void main(String args[]) throws IOException {
         MonsterParser parser = new MonsterParser();
-        Path folderPath = Path.of("C:\\Users\\maxso\\IdeaProjects\\monster_csv_generator\\src\\main\\java\\com\\example\\monster_csv_generator\\test\\resources");
+        Path folderPath = Path.of("C:\\Users\\maxso\\IdeaProjects\\monster_csv_generator\\src\\test\\java\\com\\example\\monster_csv_generator\\resources");
         List<ParsedMonsterDto> monsterList = parser.parseAllFromFolder(folderPath);
         for(int i = 0; i < monsterList.size(); i++)
         {

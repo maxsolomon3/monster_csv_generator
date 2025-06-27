@@ -1,12 +1,13 @@
 package com.example.monster_csv_generator.repository;
 
 import com.example.monster_csv_generator.entity.Monster;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface MonsterRepository
+public interface MonsterRepository extends JpaRepository<Monster,Long>
 {
     List<Monster> findByName(String name);
     List<Monster> findByNameContainingIgnoreCase(String namePart);
