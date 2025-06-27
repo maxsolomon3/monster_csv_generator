@@ -3,6 +3,7 @@ package com.example.monster_csv_generator.parser;
 import com.example.monster_csv_generator.monsterparser.dto.ParsedMonsterDto;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MonsterParser
 {
     private final ObjectMapper mapper;
