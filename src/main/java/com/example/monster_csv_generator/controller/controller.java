@@ -17,7 +17,7 @@ public class controller {
         this.exportService = exportService;
     }
 
-    @PostMapping("/folder")
+    @PostMapping("/import/folder")
     public ResponseEntity<String> importFromFolder(@RequestParam String path) {
         try {
             importService.importFromFolder(Path.of(path));

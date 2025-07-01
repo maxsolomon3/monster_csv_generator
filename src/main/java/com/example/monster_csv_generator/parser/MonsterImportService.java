@@ -26,6 +26,11 @@ public class MonsterImportService {
 
         for (ParsedMonsterDto dto : parsedMonsters) {
             Monster entity = MonsterMapper.toEntity(dto);
+            if (monsterRepository.existsByNameIgnoreCase(dto.getName()))
+            {
+                System.out.println("Skipping duplicate monster: " + entity.getName());
+                continue;
+            }
             monsterRepository.save(entity);
         }
     }

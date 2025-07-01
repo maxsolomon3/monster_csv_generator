@@ -11,7 +11,6 @@ public interface MonsterRepository extends JpaRepository<Monster,Long>
 {
     List<Monster> findByName(String name);
     List<Monster> findByNameContainingIgnoreCase(String namePart);
-
     List<Monster> findBySize(String size);
     List<Monster> findByType(String type);
     List<Monster> findByTypeContainingIgnoreCase(String typePart);
@@ -36,6 +35,8 @@ public interface MonsterRepository extends JpaRepository<Monster,Long>
     List<Monster> findBySpeedSwimGreaterThan(Integer speedSwim);
     List<Monster> findByDarkvisionGreaterThan(Integer darkvision);
     List<Monster> findByBlindsightGreaterThan(Integer blindsight);
+
+    boolean existsByNameIgnoreCase(String name);
 
     @Query("SELECT m FROM Monster m JOIN m.abilities a WHERE a.name = :abilityName")
     List<Monster> findByAbilityName(@Param("abilityName") String abilityName);
