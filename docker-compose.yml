@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    restart: always
+    container_name: monster-db
+    environment:
+      POSTGRES_DB: monsterdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    networks:
+      - spring-net
+  app:
+    build: .
+    container_name: monster-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src/test/java/com/example/monster_csv_generator/resources:/app/resources
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/monsterdb
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      - db
+    networks:
+      - spring-net
+
+networks:
+  spring-net:

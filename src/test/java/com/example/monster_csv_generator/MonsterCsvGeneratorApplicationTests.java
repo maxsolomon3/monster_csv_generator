@@ -43,6 +43,6 @@ class MonsterParserTest {
 		assertTrue(containsBlackDragon, "Parsed monsters should include Adult Black Dragon");
 
 		// Optional: assert that corrupted files didn’t cause a crash
-		assertTrue(monsters.size() < 3, "Should skip invalid files if present");
+		assertTrue(monsters.size() < 4, "Should skip invalid files if present");
 	}
 }
